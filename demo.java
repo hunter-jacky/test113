@@ -11,13 +11,19 @@ import java.util.List;
 public class OneCommitDecomposition {
 
     public static void main(String[] args){
-        Global.runningMode = 0;
+        String repo = "C:\\Users\\dell\\IdeaProjects\\TestSR\\.git";
+        String commitId = "6f6803395f358236c98cbcf705423d5b898cbd3a";
 
-        String repo = "F:\\SR-Open-Source-Projects\\jruby\\.git";
+       GitExtractor t = new GitExtractor(repo);
+        List<String> l =  t.getRepoCommitId();
+        int count = 0;
+        for(String s : l) {
+            count++;
+        }
+        System.out.println(count);
 
-        String commitId = "8f09829c50fd87cb9c8c4787e4f996ecf049056e";
         String outputDir = "F://SR_result";
-        String graphDirPath = "F://SR_GraphData/jruby/8f09829c50fd87cb9c8c4787e4f996ecf049056e";
+        String graphDirPath = "F://SR_GraphData/jruby/6f6803395f358236c98cbcf705423d5b898cbd3a";
         DiffExtractor diffExtractor = new DiffExtractor();
         diffExtractor.run(repo,commitId,outputDir,graphDirPath);
 
